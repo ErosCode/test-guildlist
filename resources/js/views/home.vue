@@ -1,7 +1,7 @@
 <template>
     <div class="charsListContainer">
         <div class="heading">
-            <h2 id="title">Liste des personnages</h2>
+            <h2 class="title">Liste des personnages</h2>
             <add-char-form :races="races" :armors="armors" :classes="classes" :specs="specs" />
             <list-view :chars="chars" />
         </div>
@@ -84,6 +84,12 @@ export default {
 }
 
 </script>
-<style lang="css" src="../../css/app.css">
-   
+<style>
+   .title {
+       margin-top: 2em;
+       text-align: center;
+   }
+   .btn-options {
+       margin-top: 1em;
+   }
 </style>    

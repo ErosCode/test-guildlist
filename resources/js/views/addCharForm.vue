@@ -1,7 +1,7 @@
 <template>
-<div>
+<div class="btn-flex-end" >
 
-<b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button>
+<b-button variant="primary" @click="$bvModal.show('modal-scoped')">Ajouter un personnage</b-button>
 
   <b-modal id="modal-scoped" hide-footer>
     <template #modal-header="{ close }">
@@ -85,18 +85,11 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-7" label="Détail:" label-for="input-7">
-          <b-form-input
-            id="input-7"
-            v-model="form.detail"
-            type="text"
-            placeholder="Détail du personnage"
-            required
-          ></b-form-input>
-        </b-form-group>
-
+        <div class="btn-options">
         <b-button @click="onSubmit" variant="success">Ajouter</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
+        </div>
+        
       </b-form>
     </template>
   </b-modal>
@@ -117,24 +110,25 @@ export default {
           proprietaire: '',
           detail: '',
         },
+        requiredMessage: 'Veuillez renseigner tous les champs requis',
         show: true,
       }
     },
     methods: {
       onSubmit() {
         if(this.form.classe === 'Choisissez la classe' || '' || null) {
-          alert('Veuillez renseigner tous les champs requis')
+          alert(this.requiredMessage)
           return
         }
         if(this.form.pseudo === '' || null) {
-          alert('Veuillez renseigner tous les champs requis')
+          alert(this.requiredMessage)
           return
         }
         if( this.form.race === 'Choisissez la race') {
             this.form.race = '';
         }
         if( this.form.spec === 'Choisissez sa spécialisation') {
-          alert('Veuillez renseigner tous les champs requis')
+          alert(this.requiredMessage)
           return
         }
         if(this.form.armor === 'Choisissez son armure') {
@@ -222,5 +216,9 @@ export default {
     content: ' *';
     color: red;
   }
-   
+  .btn-flex-end {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1em;
+  }
 </style>    

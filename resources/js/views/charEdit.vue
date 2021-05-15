@@ -1,5 +1,6 @@
 <template>
     <div class="charEditContainer">
+        <h5>Modifier un personnage</h5>
         <char-detail :char="char" :id="id" :armors="armors" :classes="classes" :races="races" :specs="specs"/>
     </div>
 </template>
@@ -77,3 +78,12 @@ export default {
 }
 
 </script>
+
+<style>
+    .charEditContainer {
+        border: 1px solid grey;
+        border-radius: 20px;
+        margin: 1em;
+        padding: 2em;
+    }
+</style>

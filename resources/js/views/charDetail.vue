@@ -74,18 +74,11 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-7" label="Détail:" label-for="input-7">
-          <b-form-input
-            id="input-7"
-            v-model="char.detail"
-            type="text"
-            placeholder="Détail du personnage"
-            required
-          ></b-form-input>
-        </b-form-group>
-
-        <b-button @click="onSubmit"  variant="success">Ajouter</b-button>
+        <div class="btn-options">
+        <b-button @click="onSubmit"  variant="success">Modifier</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
+        </div>
+
       </b-form>
     </div>
     <div v-else>Loading...</div>
@@ -123,6 +116,8 @@ export default {
           })
           .catch( error => {
             evt.preventDefault();
+            alert('Veuillez renseigner tous les champs requis')
+          return
           })
       },
       onReset(event) {

@@ -1,8 +1,7 @@
 <template>
-    <div class="table-responsive">
-
+    <div class="table-responsive div-table">
     <table class="table table-striped table-bordered">
-        <thead>
+        <thead class="table-header">
             <tr>
             <th scope="col">Pseudo</th>
             <th scope="col">Race</th>
@@ -17,22 +16,26 @@
         <tbody>
             <tr v-for="char in chars" :key="char.id">
                 <td>{{char.char_pseudo}}</td>
-                <td>{{char.race}}</td>
-                <td>{{char.armor}}</td>
-                <td v-bind:class="getClass(char.classe)">
-                        {{char.classe}}
-                </td>
-                <td>{{char.spec}}</td>
-                <td>{{char.proprietaire}}</td>
-                <td>{{getClassMethod(char.classe, char.spec)}}</td>
+                <td v-bind:class="getClass(char.classe)">{{char.race}}</td>
+                <td v-bind:class="getClass(char.classe)">{{char.armor}}</td>
+                <td v-bind:class="getClass(char.classe)">{{char.classe}}</td>
+                <td v-bind:class="getClass(char.classe)">{{char.spec}}</td>
+                <td v-bind:class="getClass(char.classe)">{{char.proprietaire}}</td>
+                <td v-bind:class="getClass(char.classe)">{{getClassMethod(char.classe, char.spec)}}</td>
                 <td><router-view name="char"/>
+                <button class="btn-edit">
                     <router-link :to="{name: 'detail', params: { id: char.id }}">Modifier</router-link>
-                    <button @click="deleteChar(char.id)">Supprimer</button>
+                    <font-awesome-icon icon="edit" />
+                </button>
+                    /
+                    <button @click="deleteChar(char.id)" class="btn-delete">
+                        Supprimer 
+                        <font-awesome-icon  class="trashcan" icon="trash" />
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
-
     </div>
 </template>
 <script>
@@ -103,9 +106,6 @@ export default {
 }
 </script>
 <style>
-    table {
-        margin: 1em;
-    }
     table > tbody > tr> td.warClass {
          background-color: #A52A2A;
     }
@@ -118,20 +118,45 @@ export default {
     table > tbody > tr:nth-child(3) > td.hunterClass {
         background-color: green;
     }
-/*Guerrier • Coup préféré
-• Cri_de_guerre()
-Cri_de_guerre() renvoie par exemple :
-“Je suis un guerrier avec la spécialisation arme”
-Mage • Sort préféré
-• Murmure_de_magie()
-Murmure_de_magie() renvoie par exemple :
-“Je suis un mage avec la spécialisation arcane”
-Prêtre • Soin préféré
-• Hymne_divin()
-Hymne_divin() renvoie par exemple :
-“Je suis un prêtre avec la spécialisation sacré”
-Chasseur • Coup préféré
-• Hurlement_de_la_bête()
-Hurlement_de_la_bête() renvoie par exemple :
-“Je suis un chasseur avec la spécialisation survie”*/
+    .div-table {
+        margin: 1em;
+    }
+    table > * {
+        font-weight: bold;
+        text-align: center;
+    }
+    .table-header {
+        color: white;
+        background-color: black;
+    }
+    .btn-delete {
+        background-color: transparent;
+        color: black;
+        border: none;
+        outline: none;
+    }
+    .btn-delete:hover {
+        text-decoration: underline;
+        color: blue;
+    }
+    .trashcan {
+        background-color: transparent;
+        color: red;
+        border: none;
+        outline: none;
+    }
+    .btn-edit {
+        background-color: transparent;
+        color: orange;
+        border: none;
+        outline: none;
+    }
+    .btn-edit > a{
+        color: black;
+        text-decoration: none;
+    }
+    .btn-edit > a:hover{
+        color: blue;
+        text-decoration: underline;
+    }
 </style>
