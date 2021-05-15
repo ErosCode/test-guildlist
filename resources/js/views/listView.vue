@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr v-for="char in chars" :key="char.id">
-                <td>{{char.char_pseudo}}</td>
+                <td class="randomColors">{{char.char_pseudo}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.race}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.armor}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.classe}}</td>
@@ -100,9 +100,22 @@ export default {
         Hurlement_de_la_bête(charClass, charSpec) {
             return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
         },
+        getRandomColors () {
+            setTimeout(()=> {
+                var par = document.querySelectorAll(".randomColors");
+                var colors = ["red", "blue", "green", "orange", "black", "grey"];
+                for (let i = 0; i < par.length; i++) {
+                    par[i].innerHTML = par[i].innerHTML.split('').map(function(c) {
+                    return "<span class='" + colors[Math.floor(Math.random() * colors.length)] + 
+                    "'" + ">" + c + "</span>"
+                }).join('');
+                }
+            }, 200)
+        },
     },
-
-
+    created() {
+        this.getRandomColors();
+    }
 }
 </script>
 <style>
@@ -158,5 +171,19 @@ export default {
     .btn-edit > a:hover{
         color: blue;
         text-decoration: underline;
+    }
+    /* colors for random letter color on character name*/
+    .red {
+        color: red;
+    }.blue {
+        color: blue;
+    }.green {
+        color: green;
+    }.orange {
+        color: orange;
+    }.black {
+        color: black;
+    }.grey {
+        color: grey;
     }
 </style>
