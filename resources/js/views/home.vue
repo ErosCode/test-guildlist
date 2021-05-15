@@ -1,0 +1,89 @@
+<template>
+    <div class="charsListContainer">
+        <div class="heading">
+            <h2 id="title">Liste des personnages</h2>
+            <add-char-form :races="races" :armors="armors" :classes="classes" :specs="specs" />
+            <list-view :chars="chars" />
+        </div>
+    </div>
+</template>
+
+<script>
+import addCharForm from "./addCharForm"
+import listView from "./listView"
+
+export default {
+    components: {
+        addCharForm,
+        listView
+    },
+    data () {
+        return {
+           chars: [],
+           races: [],
+           armors: [],
+           classes: [],
+           specs: [],
+        }
+    },
+    methods: {
+        getChars () {
+            axios.get('http://localhost/api/chars')
+            .then( response => {
+                this.chars = response.data
+            })
+            .catch( error => {
+                console.log( error );
+            })
+        },
+        getArmors () {
+            axios.get('http://localhost/api/armors')
+            .then( response => {
+                this.armors = response.data
+            })
+            .catch( error => {
+                console.log( error );
+            })
+        },
+        getRaces () {
+            axios.get('http://localhost/api/races')
+            .then( response => {
+                this.races = response.data
+            })
+            .catch( error => {
+                console.log( error );
+            })
+        },
+        getClasses () {
+            axios.get('http://localhost/api/classes')
+            .then( response => {
+                this.classes = response.data
+            })
+            .catch( error => {
+                console.log( error );
+            })
+        },
+        getSpecs () {
+            axios.get('http://localhost/api/specs')
+            .then( response => {
+                this.specs = response.data
+            })
+            .catch( error => {
+                console.log( error );
+            })
+        }
+    },
+    created () {
+        this.getChars();
+        this.getArmors();
+        this.getRaces();
+        this.getClasses();
+        this.getSpecs();
+    }
+    
+}
+
+</script>
+<style lang="css" src="../../css/app.css">
+   
+</style>    
