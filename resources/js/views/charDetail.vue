@@ -99,7 +99,11 @@ export default {
         this.char.spec = 'Choisissez une spécialisation'
       },
       onSubmit(evt) {
-        axios.put('http://localhost/api/char/' + this.id, {
+          if( this.char.spec === 'Choisissez une spécialisation') {
+          alert('Veuillez renseignez tous les champs requis')
+          return
+        }
+        axios.put( 'http://localhost/api/char/' + this.id, {
           char: {
             char_pseudo: this.char.char_pseudo,
             race: this.char.race,

@@ -44,7 +44,7 @@ export default {
     props: ['chars'],
     methods: {
         deleteChar(id) {
-            axios.delete('api/char/' + id )
+            axios.delete('http://localhost/api/char/' + id )
             .then( response => {
                 if( response.status == 200 ) {
                     this.$parent.getChars();
