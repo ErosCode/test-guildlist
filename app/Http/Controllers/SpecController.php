@@ -37,6 +37,7 @@ class SpecController extends Controller
     {
         $newSpec = new Spec;
         $newSpec->name = $request->spec["name"];
+        $newSpec->classe_id = $request->spec["classe_id"];
         $newSpec->save();
         return $newSpec;
     }
@@ -72,7 +73,14 @@ class SpecController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingSpec = Spec::find( $id );
+
+        if( $existingSpec ) {
+            $existingSpec->name = $request->spec["name"];
+            $existingSpec->classe_id = $request->spec["classe_id"];
+            $existingSpec->save();
+            return $existingSpec;
+        }
     }
 
     /**
