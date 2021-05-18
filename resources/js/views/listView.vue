@@ -44,7 +44,7 @@ export default {
     props: ['chars'],
     methods: {
         deleteChar(id) {
-            axios.delete('http://localhost/api/char/' + id )
+            axios.delete('api/char/' + id )
             .then( response => {
                 if( response.status == 200 ) {
                     this.$parent.getChars();
@@ -71,24 +71,19 @@ export default {
         },
         getClassMethod (charClass, charSpec) {
             if( charClass === 'Guerrier'){
-                console.log('bjr')
                 return this.Cri_de_guerre(charClass, charSpec)
             }            
             if( charClass === 'Mage'){
-                console.log('bjr')
                 return this.Cri_de_guerre(charClass, charSpec)
             }
             if( charClass === 'Prêtre'){
-                console.log('bjr')
                 return this.Cri_de_guerre(charClass, charSpec)
             } 
             if( charClass === 'Chasseur'){
-                console.log('bjr')
                 return this.Cri_de_guerre(charClass, charSpec)
             }
         },
         Cri_de_guerre(charClass, charSpec) {
-            console.log('coucou')
             return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
         },
         Murmure_de_magie(charClass, charSpec) {

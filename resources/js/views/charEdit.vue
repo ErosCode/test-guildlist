@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getChar () {
-            axios.get('http://localhost/api/char/' + this.id)
+            axios.get('api/char/' + this.id)
             .then( response => {
                 this.char = response.data
             })
@@ -31,7 +31,7 @@ export default {
             })
         },
         getRaces () {
-            axios.get('http://localhost/api/races')
+            axios.get('api/races')
             .then( response => {
                 this.races = response.data
             })
@@ -40,7 +40,7 @@ export default {
             })
         },
         getClasses () {
-            axios.get('http://localhost/api/classes')
+            axios.get('api/classes')
             .then( response => {
                 this.classes = response.data
             })
@@ -49,7 +49,7 @@ export default {
             })
         },
         getSpecs () {
-            axios.get('http://localhost/api/specs')
+            axios.get('api/specs')
             .then( response => {
                 this.specs = response.data
             })
@@ -58,7 +58,7 @@ export default {
             })
         },
         getArmors () {
-            axios.get('http://localhost/api/armors')
+            axios.get('api/armors')
             .then( response => {
             this.armors = response.data
             })

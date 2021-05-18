@@ -103,7 +103,7 @@ export default {
           alert('Veuillez renseignez tous les champs requis')
           return
         }
-        axios.put( 'http://localhost/api/char/' + this.id, {
+        axios.put( 'api/char/' + this.id, {
           char: {
             char_pseudo: this.char.char_pseudo,
             race: this.char.race,

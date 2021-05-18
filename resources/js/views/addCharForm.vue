@@ -134,7 +134,7 @@ export default {
         if(this.form.armor === 'Choisissez son armure') {
           this.form.armor = '';
         }
-        axios.post('http://localhost/api/char/store', {
+        axios.post('api/char/store', {
           char: {
             char_pseudo: this.form.pseudo,
             race: this.form.race,
