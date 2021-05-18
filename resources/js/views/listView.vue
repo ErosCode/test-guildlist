@@ -108,7 +108,7 @@ export default {
                 for (let i = 0; i < par.length; i++) {
                     par[i].innerHTML = par[i].innerHTML.split('').map(function(c) {
                     return "<span class='" + colors[Math.floor(Math.random() * colors.length)] + 
-                    "'" + ">" + c + "</span>"
+                    " bolder'" + ">" + c + "</span>"
                 }).join('');
                 }
             }, 200)
@@ -186,5 +186,7 @@ export default {
         color: black;
     }.grey {
         color: grey;
+    }.bolder {
+        font-weight: bolder;
     }
 </style>
