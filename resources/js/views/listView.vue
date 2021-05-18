@@ -21,7 +21,13 @@
                 <td v-bind:class="getClass(char.classe)">{{char.classe}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.spec}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.proprietaire}}</td>
-                <td v-bind:class="getClass(char.classe)">{{getClassMethod(char.classe, char.favorite_skill, char.spec)}}</td>
+                <td v-bind:class="getClass(char.classe)">
+                    <font-awesome-icon  v-if="char.classe === 'Guerrier' " icon="jedi" />
+                    <font-awesome-icon  v-if="char.classe === 'Mage' " icon="hat-wizard" />
+                    <font-awesome-icon  v-if="char.classe === 'Prêtre' " icon="cross" />
+                    <font-awesome-icon  v-if="char.classe === 'Chasseur' " icon="compress-arrows-alt" />
+                    {{getClassMethod(char.classe, char.favorite_skill, char.spec)}}
+                </td>
                 <td><router-view name="char"/>
                 <button class="btn-edit">
                     <router-link :to="{name: 'detail', params: { id: char.charId }}">Modifier</router-link>
@@ -84,7 +90,7 @@ export default {
             }
         },
         Cri_de_guerre(charClass, classSkill, charSpec) {
-            return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Cri de guerre';
+            return  'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Cri de guerre';
         },
         Murmure_de_magie(charClass, classSkill, charSpec) {
             return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Murmure de magie';

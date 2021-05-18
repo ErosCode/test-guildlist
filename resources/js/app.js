@@ -4,10 +4,10 @@ import router from './router'
 import App from './views/app.vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faEdit, faJedi, faCross, faCompressArrowsAlt, faHatWizard} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTrash, faEdit)
+library.add(faTrash, faEdit, faJedi, faCross, faCompressArrowsAlt, faHatWizard)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
