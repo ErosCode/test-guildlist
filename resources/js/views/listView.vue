@@ -14,21 +14,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="char in chars" :key="char.id">
+            <tr v-for="char in chars" :key="char.charId">
                 <td class="randomColors">{{char.char_pseudo}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.race}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.armor}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.classe}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.spec}}</td>
                 <td v-bind:class="getClass(char.classe)">{{char.proprietaire}}</td>
-                <td v-bind:class="getClass(char.classe)">{{getClassMethod(char.classe, char.spec)}}</td>
+                <td v-bind:class="getClass(char.classe)">{{getClassMethod(char.classe, char.favorite_skill, char.spec)}}</td>
                 <td><router-view name="char"/>
                 <button class="btn-edit">
-                    <router-link :to="{name: 'detail', params: { id: char.id }}">Modifier</router-link>
+                    <router-link :to="{name: 'detail', params: { id: char.charId }}">Modifier</router-link>
                     <font-awesome-icon icon="edit" />
                 </button>
                     /
-                    <button @click="deleteChar(char.id)" class="btn-delete">
+                    <button @click="deleteChar(char.charId)" class="btn-delete">
                         Supprimer 
                         <font-awesome-icon  class="trashcan" icon="trash" />
                     </button>
@@ -41,7 +41,7 @@
 <script>
 
 export default {
-    props: ['chars'],
+    props: ['chars', 'classes'],
     methods: {
         deleteChar(id) {
             axios.delete('api/char/' + id )
@@ -69,31 +69,31 @@ export default {
                 return 'bg-success'
             }
         },
-        getClassMethod (charClass, charSpec) {
+        getClassMethod (charClass, classSkill, charSpec) {
             if( charClass === 'Guerrier'){
-                return this.Cri_de_guerre(charClass, charSpec)
+                return this.Cri_de_guerre(charClass, classSkill, charSpec)
             }            
             if( charClass === 'Mage'){
-                return this.Cri_de_guerre(charClass, charSpec)
+                return this.Cri_de_guerre(charClass, classSkill, charSpec)
             }
             if( charClass === 'Prêtre'){
-                return this.Cri_de_guerre(charClass, charSpec)
+                return this.Cri_de_guerre(charClass, classSkill, charSpec)
             } 
             if( charClass === 'Chasseur'){
-                return this.Cri_de_guerre(charClass, charSpec)
+                return this.Cri_de_guerre(charClass, classSkill, charSpec)
             }
         },
-        Cri_de_guerre(charClass, charSpec) {
-            return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
+        Cri_de_guerre(charClass, classSkill, charSpec) {
+            return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Cri de guerre';
         },
-        Murmure_de_magie(charClass, charSpec) {
-            return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
+        Murmure_de_magie(charClass, classSkill, charSpec) {
+            return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Murmure de magie';
         },
-        Hymne_divin(charClass, charSpec) {
-            return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
+        Hymne_divin(charClass, classSkill, charSpec) {
+            return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Hymne Divin';
         },
-        Hurlement_de_la_bête(charClass, charSpec) {
-            return 'Je suis un ' + charClass +' avec la spécialisation ' +charSpec;
+        Hurlement_de_la_bête(charClass, classSkill, charSpec) {
+            return 'Je suis un ' + charClass + ' avec la spécialisation ' + charSpec +' et mon ' + classSkill + ' est Hurlement de la bête';
         },
         getRandomColors () {
             setTimeout(()=> {

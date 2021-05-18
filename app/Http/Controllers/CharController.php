@@ -14,7 +14,11 @@ class CharController extends Controller
      */
     public function index()
     {
-        return Char::orderBy('char_pseudo', 'DESC')->get();
+        return Char::select('*', \DB::raw("chars.id as charId"))
+        ->join('classes', 'chars.classe', '=', 'classes.name')
+        ->get();
+        //orderBy('char_pseudo', 'DESC')
+        
     }
 
     /**
