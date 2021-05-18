@@ -14,4 +14,5 @@
 
 > blockquote insert into armors(name) values ('Tissu'), ('Cuir'), ('Metal'), ('Or'), ('Platine');
 
-## Créez un personnage depuis le site avec localhost;
+## Créez un personnage depuis le site avec localhost:
+> Il est possible de changer l'URL de base en vous rendant dans /ressources/views/welcome.blade.php et en changeant l'url de la balise meta "api-base-url"
